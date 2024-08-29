@@ -1,0 +1,221 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+nav {
+    background-color: #222;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    float: right;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+.section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.home {
+    background: url('banner.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home .content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.home .content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.home .content p {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.home .scroll-down {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.about, .vision, .strategy, .services, .projects, .blog, .contact {
+    background-color: #444;
+    color: #fff;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-item {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    background-color: #555;
+}
+
+.service-list, .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service-item, .project-item {
+    background-color: #555;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 1rem;
+    width: 30%;
+    min-width: 250px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input, form textarea {
+    width: 80%;
+    max-width: 500px;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    font-size: 1rem;
+}
+
+form button {
+    width: 40%;
+    max-width: 200px;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #1b1b1b;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #333;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222;
+    padding: 2rem;
+    text-align: center;
+    color: #ccc;
+    margin-top: 2rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 1rem;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-list, .project-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-item, .project-item {
+        width: 80%;
+    }
+}
