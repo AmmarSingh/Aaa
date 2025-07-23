@@ -3,139 +3,571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1B - Empowering Billions</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>FitCore - Premium 8kg Dumbbells</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .cart-btn {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.7s forwards;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideUp 1s ease 0.9s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1, .hero p, .cta-button {
+            transform: translateY(30px);
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .dumbbell-display {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(145deg, #e0e0e0, #ffffff);
+            border-radius: 20px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dumbbell-display:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .dumbbell-svg {
+            width: 200px;
+            height: 80px;
+        }
+
+        .product-info h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #4CAF50;
+            background: white;
+            color: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .quantity-display {
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Workout Section */
+        .workout-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .workout-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .workout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .workout-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .workout-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .workout-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .reviews-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer {
+            font-weight: bold;
+            color: #4CAF50;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
-        <div class="logo">1B</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#strategy">Strategy</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="#" class="logo">FitCore</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#workouts">Workouts</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+            <button class="cart-btn" onclick="showCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+        </div>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section home">
-        <div class="content">
-            <h1>Empowering Billions. One Partnership at a Time.</h1>
-            <p>Join us on our journey to empower businesses and individuals to reach new heights.</p>
-        </div>
-        <div class="scroll-down">Scroll Down</div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <h2>About 1B</h2>
-        <p>1B stands for 1 Billion - a brand and a movement aimed at achieving monumental success by helping others grow and succeed.</p>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Starting the Journey</h3>
-                <p>Learning and evolving with every step.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>First Business Venture</h3>
-                <p>Building the foundation for future success.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>Empowering Partnerships</h3>
-                <p>Helping others expand their businesses and grow together.</p>
-            </div>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Fitness Journey</h1>
+            <p>Premium 8kg dumbbells designed for strength, endurance, and results</p>
+            <button class="cta-button" onclick="scrollToProduct()">Shop Now</button>
         </div>
     </section>
 
-    <!-- Vision Section -->
-    <section id="vision" class="section vision">
-        <h2>Our Vision</h2>
-        <p>To empower businesses and individuals to reach their fullest potential through strategic partnerships.</p>
-    </section>
-
-    <!-- Strategy Section -->
-    <section id="strategy" class="section strategy">
-        <h2>Our Strategy</h2>
-        <p>We grow together by forming partnerships that are mutually beneficial, ensuring success for everyone involved.</p>
-        <div class="infographic">
-            <!-- Add infographic here -->
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section services">
-        <h2>Our Services</h2>
-        <div class="service-list">
-            <div class="service-item">
-                <h3>Advertising</h3>
-                <p>Helping businesses expand rapidly through effective advertising.</p>
-            </div>
-            <div class="service-item">
-                <h3>Distribution</h3>
-                <p>Ensuring your products reach the right audience with our distribution solutions.</p>
-            </div>
-            <div class="service-item">
-                <h3>Consulting</h3>
-                <p>Providing insights and strategies to take your business to the next level.</p>
+    <section class="product-section" id="product">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-image">
+                    <div class="dumbbell-display" onclick="rotate3D()">
+                        <svg class="dumbbell-svg" viewBox="0 0 200 80">
+                            <defs>
+                                <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#C0C0C0;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#808080;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#606060;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Left weight -->
+                            <ellipse cx="30" cy="40" rx="25" ry="35" fill="url(#metalGradient)" stroke="#404040" stroke-width="2"/>
+                            <!-- Handle -->
+                            <rect x="55" y="35" width="90" height="10" fill="#404040" rx="5"/>
+                            <!-- Right weight -->
+                            <ellipse cx="170" cy="40" rx="25" ry="35" fill="url(#metalGradient)" stroke="#404040" stroke-width="2"/>
+                            <!-- 8kg labels -->
+                            <text x="30" y="45" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="12">8kg</text>
+                            <text x="170" y="45" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="12">8kg</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h2>Premium 8kg Dumbbells</h2>
+                    <div class="price">$89.99 <span style="text-decoration: line-through; color: #999; font-size: 1.5rem;">$120.00</span></div>
+                    <ul class="features">
+                        <li>Ergonomic non-slip grip handle</li>
+                        <li>Durable cast iron construction</li>
+                        <li>Perfect for home and gym workouts</li>
+                        <li>Ideal weight for strength training</li>
+                        <li>Compact and space-efficient design</li>
+                        <li>Free shipping & 2-year warranty</li>
+                    </ul>
+                    <div class="quantity-selector">
+                        <span>Quantity:</span>
+                        <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                        <span class="quantity-display" id="quantity">1</span>
+                        <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                    <button class="add-to-cart" style="background: #FF6B6B;" onclick="buyNow()">Buy Now</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <h2>Our Projects</h2>
-        <div class="project-list">
-            <div class="project-item">
-                <h3>News Channel for Kids</h3>
-                <p>Empowering children to share their voices through our unique news platform.</p>
-            </div>
-            <div class="project-item">
-                <h3>Advertising Business</h3>
-                <p>Helping new and existing businesses grow quickly through strategic advertising.</p>
-            </div>
-            <div class="project-item">
-                <h3>Movement for Girl and Woman Respect</h3>
-                <p>Launching a movement to educate and enforce the respect of women in our society.</p>
-            </div>
-            <div class="project-item">
-                <h3>Social Platform for Ideas</h3>
-                <p>Revolutionizing the way we discuss and organize ideas through a new social platform.</p>
+    <section class="workout-section" id="workouts">
+        <div class="container">
+            <h2>Perfect for These Workouts</h2>
+            <div class="workout-grid">
+                <div class="workout-card">
+                    <h3>💪 Strength Training</h3>
+                    <p>Build muscle mass and increase overall strength with compound movements like chest press, rows, and shoulder exercises.</p>
+                </div>
+                <div class="workout-card">
+                    <h3>🔥 HIIT Workouts</h3>
+                    <p>High-intensity interval training with dumbbell circuits for maximum calorie burn and cardiovascular benefits.</p>
+                </div>
+                <div class="workout-card">
+                    <h3>🏠 Home Fitness</h3>
+                    <p>Complete full-body workouts from the comfort of your home with this versatile and compact fitness solution.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="section blog">
-        <h2>Blog</h2>
-        <!-- Blog posts will go here -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Amazing quality! The grip is comfortable and the weight feels perfectly balanced. Great for my home workouts."</p>
+                    <div class="reviewer">- Sarah M.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Durable construction and fast shipping. These dumbbells have transformed my fitness routine completely."</p>
+                    <div class="reviewer">- Mike D.</div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Perfect weight for strength training. The non-slip grip gives me confidence during intense workouts."</p>
+                    <div class="reviewer">- Emma L.</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <h2>Contact Us</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Your Country" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 1B - Empowering Billions</p>
-        <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+        <div class="container">
+            <h3>FitCore</h3>
+            <p>Your partner in fitness excellence</p>
+            <p>&copy; 2025 FitCore. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        let quantity = 1;
+        let cartCount = 0;
+
+        function scrollToProduct() {
+            document.getElementById('product').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function changeQuantity(change) {
+            quantity = Math.max(1, quantity + change);
+            document.getElementById('quantity').textContent = quantity;
+        }
+
+        function addToCart() {
+            cartCount += quantity;
+            document.getElementById('cart-count').textContent = cartCount;
+            
+            // Add animation effect
+            const btn = event.target;
+            btn.style.transform = 'scale(0.95)';
+            btn.textContent = 'Added!';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+                btn.textContent = 'Add to Cart';
+            }, 1000);
+        }
+
+        function buyNow() {
+            alert(`Proceeding to checkout with ${quantity} dumbbell(s) - Total: $${(89.99 * quantity).toFixed(2)}`);
+        }
+
+        function showCart() {
+            if (cartCount > 0) {
+                alert(`You have ${cartCount} item(s) in your cart. Total: $${(89.99 * cartCount).toFixed(2)}`);
+            } else {
+                alert('Your cart is empty. Add some dumbbells first!');
+            }
+        }
+
+        function rotate3D() {
+            const display = document.querySelector('.dumbbell-display');
+            display.style.transform = 'rotateY(360deg) rotateX(360deg)';
+            setTimeout(() => {
+                display.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            }, 1000);
+        }
+
+        // Scroll effect for navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
